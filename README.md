@@ -4,6 +4,9 @@ Symfony DDD Edition
 Welcome to the Symfony DDD Edition - a fully-functional Symfony2
 application that you can use as the skeleton for your new applications.
 
+[![Build Status](https://travis-ci.org/crafics/symfony-ddd-edition?branch=master)](https://travis-ci.org/crafics/symfony-ddd-edition)
+[![Coverage Status](https://coveralls.io/repos/crafics/symfony-ddd-edition/badge.png?branch=master)](https://coveralls.io/r/crafics/symfony-ddd-edition?branch=master)
+
 This edition is a modified clone of the great gimler/symfony-rest-edition.
 
 This document contains information on how to download, install, and start
