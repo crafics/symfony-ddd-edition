@@ -23,11 +23,11 @@ class AppKernel extends Kernel
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle(),
             new Bazinga\Bundle\RestExtraBundle\BazingaRestExtraBundle(),
-            new Dschini\Blog\DomainBundle\DschiniBlogDomainBundle(),
-            new Dschini\Blog\RestBundle\DschiniBlogRestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Dschini\Blog\DomainBundle\DschiniBlogDomainBundle();
+            $bundles[] = new Dschini\Blog\RestBundle\DschiniBlogRestBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

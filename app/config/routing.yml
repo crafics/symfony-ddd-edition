@@ -1,6 +1,6 @@
 dschini_blog_rest:
     resource: "@DschiniBlogRestBundle/Resources/config/routing.yml"
-    prefix:   /api
+    prefix:   /
 
 NelmioApiDocBundle:
   resource: "@NelmioApiDocBundle/Resources/config/routing.yml"

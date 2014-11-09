@@ -1,12 +1,8 @@
 doctrine:
-    default_connection: default
-    connections:
-        default:
-            driver:   pdo_sqlite
-            memory:   true
     dbal:
         driver: pdo_sqlite
-        path: %kernel.root_dir%/sqlite-test.db
+        memory: false
+        path: %kernel.root_dir%/sqlite-dev.db
         charset: UTF8
     orm:
         auto_generate_proxy_classes: %kernel.debug%
