@@ -1,0 +1,7 @@
+parameters:
+#    dschini_blog_rest.example.class: Dschini\Blog\RestBundle\Example
+
+services:
+#    dschini_blog_rest.example:
+#        class: %dschini_blog_rest.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

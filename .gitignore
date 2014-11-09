@@ -1,4 +1,10 @@
-/.vagrant/
-/.idea/
+/web/bundles/
+/app/cache/*
+/app/logs/*
+/build/
 /vendor/
+/bin/
+/.vagrant/
+/.idea/*
+/composer.phar
 Vagrantfile

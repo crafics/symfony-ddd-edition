@@ -1,0 +1,5 @@
+dschini_blog_rest_post:
+    type: rest
+    prefix: /v1
+    resource: "@DschiniBlogRestBundle/Controller/PostController.php"
+    prefix:  api_1_ # naming collision

@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="dschini.blog.domain.post.service.class">Dschini\Blog\DomainBundle\Service\PostService</parameter>
+        <parameter key="dschini.blog.domain.post.entity.class">Dschini\Blog\DomainBundle\Entity\Post</parameter>
+        <parameter key="doctrine.orm.entity.repository.class">Doctrine\ORM\EntityRepository</parameter>
+    </parameters>
+
+    <services>
+        <service id="dschini.blog.domain.post.repository"
+                 class="%doctrine.orm.entity.repository.class%"
+                 factory-service="doctrine.orm.default_entity_manager"
+                 factory-method="getRepository"
+                 public="false">
+            <argument>%dschini.blog.domain.post.entity.class%</argument>
+        </service>
+            <service id="dschini.blog.post"
+                 class="%dschini.blog.domain.post.service.class%"
+                 public="true">
+                <argument type="service" id="dschini.blog.domain.post.repository" />
+        </service>
+    </services>
+
+
+</container>
