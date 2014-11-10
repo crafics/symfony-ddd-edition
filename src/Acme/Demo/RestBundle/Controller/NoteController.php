@@ -83,8 +83,8 @@ class NoteController extends FOSRestController
         $form = $this->createForm(new NoteType(), $note);
         $form->submit($request);
         if ($form->isValid()) {
-            $this->NoteService()->createNote($form->getData()->getMessage());
-            return $this->routeRedirectView('get_note', array('id' => 1));
+            $note = $this->NoteService()->createNote($form->getData()->getMessage());
+            return $this->routeRedirectView('get_note', array('id' => $note->getId()));
         }
         return array(
             'form' => $form

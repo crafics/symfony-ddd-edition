@@ -23,7 +23,9 @@ class NoteService
      * @param EntityManagerInterface $em
      * @param ValidatorInterface $validator
      */
-    public function __construct(NoteRepositoryInterface $noteRepository, EntityManagerInterface $em, ValidatorInterface $validator)
+    public function __construct(NoteRepositoryInterface $noteRepository,
+                                EntityManagerInterface $em,
+                                ValidatorInterface $validator)
     {
         $this->noteRepository = $noteRepository;
         $this->em = $em;
