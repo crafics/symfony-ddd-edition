@@ -26,8 +26,8 @@ class AppKernel extends Kernel
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Dschini\Blog\DomainBundle\DschiniBlogDomainBundle();
-            $bundles[] = new Dschini\Blog\RestBundle\DschiniBlogRestBundle();
+            $bundles[] = new Acme\Demo\DomainBundle\AcmeDemoDomainBundle();
+            $bundles[] = new Acme\Demo\RestBundle\AcmeDemoRestBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

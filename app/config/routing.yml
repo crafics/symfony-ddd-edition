@@ -1,5 +1,5 @@
-dschini_blog_rest:
-    resource: "@DschiniBlogRestBundle/Resources/config/routing.yml"
+acme_demo_rest:
+    resource: "@AcmeDemoRestBundle/Resources/config/routing.yml"
     prefix:   /
 
 NelmioApiDocBundle:

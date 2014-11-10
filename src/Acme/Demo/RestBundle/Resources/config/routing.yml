@@ -1,0 +1,4 @@
+acme_demo_rest_note:
+    type: rest
+    #prefix: /v1
+    resource: "@AcmeDemoRestBundle/Controller/NoteController.php"
