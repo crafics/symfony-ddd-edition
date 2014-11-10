@@ -23,6 +23,7 @@
                  public="true">
                 <argument type="service" id="acme.demo.domain.note.repository" />
                 <argument type="service" id="doctrine.orm.default_entity_manager" />
+                <argument type="service" id="validator" />
         </service>
     </services>
 

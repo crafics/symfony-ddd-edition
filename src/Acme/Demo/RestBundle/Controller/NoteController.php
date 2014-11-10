@@ -46,8 +46,8 @@ class NoteController extends FOSRestController
     public function getNoteAction(Request $request, $id)
     {
         $note = $this->NoteService()->getNoteById($id);
-        if (false === $note) {
-            throw $this->createNotFoundException("Note does not exist.");
+        if (null === $note) {
+            throw $this->createNotFoundException("note does not exist.");
         }
         $view = new View($note);
         $group = $this->container->get('security.context')->isGranted('ROLE_API') ? 'restapi' : 'standard';

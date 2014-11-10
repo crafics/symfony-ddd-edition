@@ -19,21 +19,17 @@ class NoteControllerTest extends WebTestCase
     public function testGetNote()
     {
         $client = $this->getClient();
-
         $client->request('GET', '/notes/1.json');
         $response = $client->getResponse();
-
         $this->assertEquals(200, $response->getStatusCode(), $response->getContent());
 
-        /*
-        $client = $this->getClient(true);
-
-        $client->request('GET', '/posts/1.json');
+        $client = $this->getClient(false);
+        $client->request('GET', '/notes/99999.json');
         $response = $client->getResponse();
-
         $this->assertEquals(404, $response->getStatusCode(), $response->getContent());
-        $this->assertEquals('{"code":404,"message":"Post does not exist."}', $response->getContent());
+        $this->assertEquals('{"code":404,"message":"note does not exist."}', $response->getContent());
 
+        /*
         $this->createNote($client, 'my post for get');
 
         $client->request('GET', '/posts/1.json');
@@ -55,7 +51,7 @@ class NoteControllerTest extends WebTestCase
     public function testPostNote()
     {
         $client = $this->getClient(false);
-        $this->createNote($client, 'my note 123');
+        $this->createNote($client, 'yes');
         $response = $client->getResponse();
         $this->assertJsonResponse($response, Codes::HTTP_CREATED);
         $this->assertEquals($response->headers->get('location'), 'http://localhost/notes/1');
