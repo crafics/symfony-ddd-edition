@@ -1,17 +1,5 @@
 <?php
-/**
- * © Sixt GmbH & Co. Autovermietung KG
- 
- * Created by PhpStorm.
- * User: manfredweber
- * Date: 11.11.14
- * Time: 21:55
- */
-
-namespace Acme\HelloBundle\Security;
-
-
-namespace Acme\HelloBundle\Security;
+namespace Acme\Demo\RestBundle\Security;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\User;

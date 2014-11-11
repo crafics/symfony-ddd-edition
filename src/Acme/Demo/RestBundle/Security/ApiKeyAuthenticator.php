@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\HelloBundle\Security;
+namespace Acme\Demo\RestBundle\Security;
 
 use Symfony\Component\Security\Core\Authentication\SimplePreAuthenticatorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
