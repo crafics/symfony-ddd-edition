@@ -1,4 +1,4 @@
 Acme\Demo\DomainBundle\Entity\Note:
     properties:
-        name:
+        message:
             - NotBlank: ~

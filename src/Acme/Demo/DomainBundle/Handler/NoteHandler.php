@@ -58,8 +58,6 @@ class NoteHandler
      */
     private function validateAndPersistNote(NoteInterface $note){
         $errors = $this->validator->validate($note);
-        var_dump($note);
-        exit();
         if (count($errors) > 0) {
             throw new InvalidArgumentException((string) $errors);
         }

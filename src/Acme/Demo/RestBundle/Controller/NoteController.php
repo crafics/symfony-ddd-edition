@@ -80,10 +80,10 @@ class NoteController extends FOSRestController
     public function postNoteAction(Request $request)
     {
         $noteType = new NoteType();
-        $newNote = $this->NoteHandler()->post( $request->request->all() );
+        $newNote = $this->NoteHandler()->post( $request->request->get($noteType->getName()) );
         if(null !== $newNote){
 
         }
-        return $this->routeRedirectView('get_note', array('id' => $note->getId()));
+        return $this->routeRedirectView('get_note', array('id' => $newNote->getId()));
     }
 }
