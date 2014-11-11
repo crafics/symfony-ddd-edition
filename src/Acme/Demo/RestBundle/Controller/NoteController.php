@@ -3,7 +3,7 @@
 namespace Acme\Demo\RestBundle\Controller;
 
 use Acme\Demo\DomainBundle\Entity\Note;
-use Acme\Demo\DomainBundle\Form\NoteType;
+use Acme\Demo\RestBundle\Form\NoteType;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 use FOS\RestBundle\View\View;
@@ -14,9 +14,9 @@ use FOS\RestBundle\Util\Codes;
 class NoteController extends FOSRestController
 {
     /**
-     * @return \Acme\Demo\DomainBundle\Service\NoteService
+     * @return \Acme\Demo\DomainBundle\Handler\NoteHandlerInterface
      */
-    public function NoteService()
+    public function NoteHandler()
     {
         return $this->get('acme.demo.note');
     }
@@ -45,7 +45,7 @@ class NoteController extends FOSRestController
      */
     public function getNoteAction(Request $request, $id)
     {
-        $note = $this->NoteService()->getNoteById($id);
+        $note = $this->NoteHandler()->get($id);
         if (null === $note) {
             throw $this->createNotFoundException("note does not exist.");
         }
@@ -79,15 +79,11 @@ class NoteController extends FOSRestController
      */
     public function postNoteAction(Request $request)
     {
-        $note = new Note();
-        $form = $this->createForm(new NoteType(), $note);
-        $form->submit($request);
-        if ($form->isValid()) {
-            $note = $this->NoteService()->createNote($form->getData()->getMessage());
-            return $this->routeRedirectView('get_note', array('id' => $note->getId()));
+        $noteType = new NoteType();
+        $newNote = $this->NoteHandler()->post( $request->request->all() );
+        if(null !== $newNote){
+
         }
-        return array(
-            'form' => $form
-        );
+        return $this->routeRedirectView('get_note', array('id' => $note->getId()));
     }
 }

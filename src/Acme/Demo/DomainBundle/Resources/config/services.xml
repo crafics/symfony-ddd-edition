@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="acme.demo.domain.note.service.class">Acme\Demo\DomainBundle\Service\NoteService</parameter>
+        <parameter key="acme.demo.domain.note.handler.class">Acme\Demo\DomainBundle\Handler\NoteHandler</parameter>
         <parameter key="acme.demo.domain.note.entity.class">Acme\Demo\DomainBundle\Entity\Note</parameter>
         <parameter key="doctrine.orm.entity.repository.class">Doctrine\ORM\EntityRepository</parameter>
     </parameters>
@@ -19,7 +19,7 @@
             <argument>%acme.demo.domain.note.entity.class%</argument>
         </service>
             <service id="acme.demo.note"
-                 class="%acme.demo.domain.note.service.class%"
+                 class="%acme.demo.domain.note.handler.class%"
                  public="true">
                 <argument type="service" id="acme.demo.domain.note.repository" />
                 <argument type="service" id="doctrine.orm.default_entity_manager" />

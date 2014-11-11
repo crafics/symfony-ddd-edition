@@ -7,8 +7,7 @@ use Doctrine\Common\Persistence\ObjectRepository;
  * Interface MessageRepositoryInterface
  * @package Acme\Demo\DomainBundle\Entity
  */
-interface NoteRepositoryInterface extends ObjectRepository
+Interface NoteRepositoryInterface extends ObjectRepository
 {
     public function fetchLatest();
-
 }

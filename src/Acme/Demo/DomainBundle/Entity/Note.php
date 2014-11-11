@@ -2,6 +2,7 @@
 
 namespace Acme\Demo\DomainBundle\Entity;
 
+use Acme\Demo\DomainBundle\Model\NoteInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Acme\Demo\DomainBundle\Entity\NoteRepository")
  */
-class Note
+class Note implements NoteInterface
 {
     /**
      * @var int
