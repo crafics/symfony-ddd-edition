@@ -10,6 +10,7 @@ use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Util\Codes;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class NoteController extends FOSRestController
 {
@@ -47,7 +48,7 @@ class NoteController extends FOSRestController
     {
         $note = $this->NoteHandler()->get($id);
         if (null === $note) {
-            throw $this->createNotFoundException("note does not exist.");
+            throw new NotFoundHttpException(sprintf('The resource \'%s\' was not found.',$id));
         }
         $view = new View($note);
         $group = $this->container->get('security.context')->isGranted('ROLE_API') ? 'restapi' : 'standard';

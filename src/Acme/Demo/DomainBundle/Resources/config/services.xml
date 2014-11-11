@@ -7,23 +7,13 @@
     <parameters>
         <parameter key="acme.demo.domain.note.handler.class">Acme\Demo\DomainBundle\Handler\NoteHandler</parameter>
         <parameter key="acme.demo.domain.note.entity.class">Acme\Demo\DomainBundle\Entity\Note</parameter>
-        <parameter key="doctrine.orm.entity.repository.class">Doctrine\ORM\EntityRepository</parameter>
     </parameters>
 
     <services>
-        <service id="acme.demo.domain.note.repository"
-                 class="%doctrine.orm.entity.repository.class%"
-                 factory-service="doctrine.orm.default_entity_manager"
-                 factory-method="getRepository"
-                 public="false">
+        <service id="acme.demo.note" class="%acme.demo.domain.note.handler.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%acme.demo.domain.note.entity.class%</argument>
-        </service>
-            <service id="acme.demo.note"
-                 class="%acme.demo.domain.note.handler.class%"
-                 public="true">
-                <argument type="service" id="acme.demo.domain.note.repository" />
-                <argument type="service" id="doctrine.orm.default_entity_manager" />
-                <argument type="service" id="validator" />
+            <argument type="service" id="validator" />
         </service>
     </services>
 

@@ -5,6 +5,7 @@ namespace Acme\Demo\DomainBundle\Handler;
 use Acme\Demo\DomainBundle\Entity\Note;
 use Acme\Demo\DomainBundle\Entity\NoteRepositoryInterface;
 use Acme\Demo\DomainBundle\Model\NoteInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -15,21 +16,30 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class NoteHandler
 {
+    /**
+     * @var ObjectManager
+     */
+    protected $om;
+
+    /**
+     * @var \Doctrine\Common\Persistence\ObjectRepository
+     */
     protected $noteRepository;
-    protected $em;
+
+    /**
+     * @var ValidatorInterface
+     */
     protected $validator;
 
     /**
-     * @param NoteRepositoryInterface $noteRepository
-     * @param EntityManagerInterface $em
+     * @param ObjectManager $om
+     * @param $entityClass
      * @param ValidatorInterface $validator
      */
-    public function __construct(NoteRepositoryInterface $noteRepository,
-                                EntityManagerInterface $em,
-                                ValidatorInterface $validator)
+    public function __construct(ObjectManager $om, $entityClass, ValidatorInterface $validator)
     {
-        $this->noteRepository = $noteRepository;
-        $this->em = $em;
+        $this->om = $om;
+        $this->noteRepository = $this->om->getRepository($entityClass);
         $this->validator = $validator;
     }
 
@@ -61,8 +71,8 @@ class NoteHandler
         if (count($errors) > 0) {
             throw new InvalidArgumentException((string) $errors);
         }
-        $this->em->persist($note);
-        $this->em->flush($note);
+        $this->om->persist($note);
+        $this->om->flush($note);
         return $note;
     }
 

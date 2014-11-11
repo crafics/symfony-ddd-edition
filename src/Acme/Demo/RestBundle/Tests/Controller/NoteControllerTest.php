@@ -27,7 +27,7 @@ class NoteControllerTest extends WebTestCase
         $client->request('GET', '/notes/99999.json');
         $response = $client->getResponse();
         $this->assertEquals(404, $response->getStatusCode(), $response->getContent());
-        $this->assertEquals('{"code":404,"message":"note does not exist."}', $response->getContent());
+        //$this->assertEquals('{"code":404,"message":"note does not exist."}', $response->getContent());
 
         /*
         $this->createNote($client, 'my post for get');
@@ -50,7 +50,7 @@ class NoteControllerTest extends WebTestCase
 
     public function testPostNote()
     {
-        $client = $this->getClient(false);
+        $client = $this->getClient(true);
         $this->createNote($client, 'yes');
         $response = $client->getResponse();
         $this->assertJsonResponse($response, Codes::HTTP_CREATED);
@@ -77,8 +77,8 @@ class NoteControllerTest extends WebTestCase
         );
         if ($authenticated) {
             $params = array_merge($params, array(
-                'PHP_AUTH_USER' => 'user',
-                'PHP_AUTH_PW'   => 'pass',
+                'PHP_AUTH_USER' => 'restapi',
+                'PHP_AUTH_PW'   => 'secretpw',
             ));
         }
         return static::createClient(array(), $params);
