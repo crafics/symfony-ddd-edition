@@ -62,7 +62,7 @@ class NoteController extends FOSRestController
      *
      * @ApiDoc(
      *   resource = true,
-     *   input = "Acme\Demo\DomainBundle\Form\NoteType",
+     *   input = "Acme\Demo\RestBundle\Form\NoteType",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *     400 = "Returned when the form has errors"
@@ -82,9 +82,11 @@ class NoteController extends FOSRestController
     {
         $noteType = new NoteType();
         $newNote = $this->NoteHandler()->post( $request->request->get($noteType->getName()) );
-        if(null !== $newNote){
+        $routeOptions = array(
+            'id' => $newNote->getId(),
+            '_format' => $request->get('_format')
+        );
+        return $this->routeRedirectView('get_note', $routeOptions, Codes::HTTP_CREATED);
 
-        }
-        return $this->routeRedirectView('get_note', array('id' => $newNote->getId()));
     }
 }
