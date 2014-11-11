@@ -12,9 +12,11 @@ class ApiKeyUserProvider implements UserProviderInterface
     {
         // Look up the username based on the token in the database, via
         // an API call, or do something entirely different
-        $username = 'restapi';
-
-        return $username;
+        if($apiKey=='123'){
+            $username = 'restapi';
+            return $username;
+        }
+        return false;
     }
 
     public function loadUserByUsername($username)

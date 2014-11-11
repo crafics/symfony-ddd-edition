@@ -1,7 +1,0 @@
-parameters:
-#    acme_demo_rest.example.class: Acme\Demo\RestBundle\Example
-
-services:
-#    acme_demo_rest.example:
-#        class: %acme_demo_rest.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

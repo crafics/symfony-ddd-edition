@@ -10,21 +10,17 @@ class NoteControllerTest extends WebTestCase
 {
     public function setUp()
     {
-        $cacheDir = $this->getClient()->getContainer()->getParameter('kernel.cache_dir');
-        if (file_exists($cacheDir . '/sf_note_data')) {
-            unlink($cacheDir . '/sf_note_data');
-        }
     }
 
     public function testGetNote()
     {
         $client = $this->getClient();
-        $client->request('GET', '/notes/1.json');
+        $client->request('GET', '/api/v1/notes/1.json');
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode(), $response->getContent());
 
         $client = $this->getClient(false);
-        $client->request('GET', '/notes/99999.json');
+        $client->request('GET', '/api/v1/notes/99999.json');
         $response = $client->getResponse();
         $this->assertEquals(404, $response->getStatusCode(), $response->getContent());
         //$this->assertEquals('{"code":404,"message":"note does not exist."}', $response->getContent());
@@ -61,7 +57,7 @@ class NoteControllerTest extends WebTestCase
 
     protected function createNote(Client $client, $message)
     {
-        $client->request('POST', '/notes.json', array(
+        $client->request('POST', '/api/v1/notes.json', array(
             'note' => array(
                 'message' => $message
             )
@@ -73,7 +69,7 @@ class NoteControllerTest extends WebTestCase
     private function getClient($authenticated = false)
     {
         $params = array(
-            'apikey' => 'abcdefg'
+            'apikey' => '123'
         );
         if ($authenticated) {
             $params = array_merge($params, array(

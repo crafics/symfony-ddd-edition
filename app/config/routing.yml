@@ -1,6 +1,6 @@
 acme_demo_rest:
     resource: "@AcmeDemoRestBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /api/v1
 
 NelmioApiDocBundle:
   resource: "@NelmioApiDocBundle/Resources/config/routing.yml"

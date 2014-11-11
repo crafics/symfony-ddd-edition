@@ -16,6 +16,4 @@
             <argument type="service" id="validator" />
         </service>
     </services>
-
-
 </container>

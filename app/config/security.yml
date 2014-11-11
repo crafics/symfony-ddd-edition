@@ -18,9 +18,10 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            pattern: ^/
-            anonymous: ~
+        api:
+            pattern: ^/api/v1
             stateless:  true
             http_basic:
                 realm: "Demo REST API (username: restapi, password: secretpw)"
+            simple_preauth:
+                authenticator: apikey_authenticator
