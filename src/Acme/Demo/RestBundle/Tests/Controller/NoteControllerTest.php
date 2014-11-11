@@ -69,7 +69,7 @@ class NoteControllerTest extends WebTestCase
     private function getClient($authenticated = false)
     {
         $params = array(
-            'apikey' => '123'
+            'HTTP_apikey' => 123
         );
         if ($authenticated) {
             $params = array_merge($params, array(
