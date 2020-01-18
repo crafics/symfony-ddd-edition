@@ -34,7 +34,7 @@ Then, use the `create-project` command to generate a new Symfony application:
 
 Composer will install Symfony and all its dependencies under the
 `path/to/install` directory.
-
+test
 ### Download an Archive File
 
 To quickly test Symfony, you can also download an [archive][3] of the Standard
